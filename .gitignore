@@ -1,0 +1,49 @@
+# Ignore diretórios de compilação e saída
+/bin/
+/build/
+
+# Ignore arquivos de configuração do Eclipse
+.classpath
+.project
+.settings/
+
+# Ignore logs e arquivos temporários
+*.log
+*.tmp
+*.swp
+*.DS_Store
+*.class
+
+# Ignore arquivos do sistema
+Thumbs.db
+.DS_Store
+*.bak
+*.old
+
+# Ignore dependências baixadas (se usar um gerenciador como Maven ou Gradle)
+target/
+*.jar
+*.war
+*.ear
+
+# Ignore arquivos do OneDrive (no caso de estar dentro de uma pasta do OneDrive)
+.OneDrive
+.OneDriveTemp
+
+# Ignore arquivos do sistema operacional
+*.ini
+*.dat
+*.exe
+
+# Ignore arquivos do Git relacionados a commits antigos e configurações temporárias
+.git/
+*.orig
+*.lock
+
+# Ignore IDEs e editores específicos (ajuste conforme seu ambiente)
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
