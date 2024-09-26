@@ -67,22 +67,25 @@ public class main {
 		int mes = Integer.parseInt(dataNascimento.substring(0, 2));
 		int ano = Integer.parseInt(dataNascimento.substring(3, 7));
 				
-
-		int opcaoEspecie = 0;
 		String especie = "";
-		while (opcaoEspecie != 1 && opcaoEspecie!= 2) {
-			System.out.println("Digite a espécie do animal 1) Gato 2) Cachorro: ");
-			opcaoEspecie = sc.nextInt();
-			sc.nextLine();
-			if (opcaoEspecie == 1) {
-				especie = "gato";
-			} else if (opcaoEspecie == 2) {
-				especie = "cachorro";
-			} else {
-				System.out.println("Opção inválida, digite novamente");
-			}
-		}
-		
+	    while (true) {
+	        System.out.println("Digite a espécie do animal 1) Gato 2) Cachorro: ");
+	        String opcao = sc.nextLine();
+	        try {
+	            int opcaoEspecie = Integer.parseInt(opcao);
+	            if (opcaoEspecie == 1) {
+	                especie = "gato";
+	                break;
+	            } else if (opcaoEspecie == 2) {
+	                especie = "cachorro";
+	                break;
+	            } else {
+	                System.out.println("Opção inválida, digite novamente.");
+	            }
+	        } catch (NumberFormatException e) {
+	            System.out.println("Entrada inválida. Por favor, insira um número.");
+	        }
+	    }
 		
 		String porte ="";
 		String pelos ="";
@@ -105,7 +108,7 @@ public class main {
 			
 		
 		} else if (especie.equalsIgnoreCase("gato")) {
-			System.out.println("Digite o padrão de pelagem do animal:  ");
+			System.out.println("Digite o padrão de pelagem do gato:  ");
 			pelos = sc.nextLine();
 		} else {
 			System.out.println("Opção inválida, digite novamente");
