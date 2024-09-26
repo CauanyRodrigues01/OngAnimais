@@ -14,9 +14,13 @@ public class main {
 
 		while (true) {
 			System.out.println(
-					"Opções Disponíveis: \n 1) Cadastrar Animal. \n " + "2) Listar Animais disponíveis para adoção. \n "
-							+ "3) Adotar Animal \n " + "4) Cadastrar adotante \n " + "5) Listar adotantes \n "
-							+ "6) Exibir relatório \n " + "7) Sair do sistema.");
+					"Opções Disponíveis: \n 1) Cadastrar Animal. \n " 
+							+ "2) Listar Animais disponíveis para adoção. \n "
+							+ "3) Adotar Animal \n " 
+							+ "4) Cadastrar adotante \n " 
+							+ "5) Listar adotantes \n "
+							+ "6) Exibir relatório \n " 
+							+ "7) Sair do sistema.");
 			System.out.println("Digite sua opção.");
 			String opcao = sc.nextLine();
 
