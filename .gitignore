@@ -1,5 +1,4 @@
 # Ignore diretórios de compilação e saída
-/bin/
 /build/
 
 # Ignore arquivos de configuração do Eclipse
