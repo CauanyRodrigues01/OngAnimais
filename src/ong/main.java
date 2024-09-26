@@ -145,6 +145,6 @@ public class main {
 		}
 		System.out.println("Seu animal cadastrado com sucesso! ");
 		System.out.println("-------------------------------------------------------");
-		
+		sc.close();
 	}// fim - cadastrar animal
 }// fim - main
