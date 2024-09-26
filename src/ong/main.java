@@ -8,44 +8,53 @@ public class main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Seja Bem-Vindo ao Sistema de ONG para Adoção de Animais.");
+		System.out.println("Seja Bem-Vindo ao Sistema de ONG para Adoção de Animais.\n");
 		ArrayList<Animal> animais = new ArrayList<Animal>();
 		
 		while (true) {
 			System.out.println(
-					"Opções Disponíveis: \n 1) Cadastrar Animal. \n 2) Listar Animais disponíveis para adoção. \n 3) Adotar Animal \n 4) Cadastrar adotante \n 5) Listar adotantes \n 6) Exibir relatório \n 7) Sair do sistema.");
+					"Opções Disponíveis: \n 1) Cadastrar Animal. \n "
+					+ "2) Listar Animais disponíveis para adoção. \n "
+					+ "3) Adotar Animal \n "
+					+ "4) Cadastrar adotante \n "
+					+ "5) Listar adotantes \n "
+					+ "6) Exibir relatório \n "
+					+ "7) Sair do sistema.");
 			System.out.println("Digite sua opção.");
 			String opcao = sc.nextLine();
+			
+			try {
+			    int opcaoMenu = Integer.parseInt(opcao);
+			    
+			    if (opcaoMenu == 1) {
+					cadastrarAnimal(animais);						
 
-			if (opcao.equals("1")) {
-				cadastrarAnimal(animais);						
+				} else if (opcaoMenu == 2) {
+					System.out.println("Listagem de animais disponíveis:");
 
-			} else if (opcao.equals("2")) {
-				System.out.println("Listagem de animais disponíveis:");
+				} else if (opcaoMenu == 3) {
+					System.out.println("Adotar Animal");
 
-			} else if (opcao.equals("3")) {
-				System.out.println("Adotar Animal");
+				} else if (opcaoMenu == 4) {
+					System.out.println("Cadastrar adotante");
 
-			} else if (opcao.equals("4")) {
-				System.out.println("Cadastrar adotante");
+				} else if (opcaoMenu == 5) {
+					System.out.println("Listar adotantes");
 
-			} else if (opcao.equals("5")) {
-				System.out.println("Listar adotantes");
+				} else if (opcaoMenu == 6) {
+					System.out.println("Exibir relatório");
 
-			} else if (opcao.equals("6")) {
-				System.out.println("Exibir relatório");
-
-			} else if (opcao.equals("7")) {
-					System.out.println("Saindo do Sistema, obrigada por Usar.");
-					break;
-			} else {
-				System.out.println("Opção inválida, digite novamente");
+				} else if (opcaoMenu == 7) {
+						System.out.println("Saindo do Sistema, obrigada por Usar.");
+						break;
+				} else {
+					System.out.println("Opção inválida, digite novamente");
+				}
+			} catch (NumberFormatException e) {
+			    System.out.println("Entrada inválida. Por favor, insira um número.");
 			}
-
 		}
-	}
-	
-	//funcoes
+	}// fim - main
 	
 	public static void cadastrarAnimal(ArrayList<Animal> animais) {
 		Scanner sc = new Scanner(System.in);
@@ -130,5 +139,5 @@ public class main {
 		System.out.println("Seu animal cadastrado com sucesso! ");
 		System.out.println("-------------------------------------------------------");
 		
-	}
-}
+	}// fim - cadastrar animal
+}// fim - main
