@@ -96,11 +96,26 @@ public class main {
 		System.out.println("Digite o nome do animal: ");
 		String nome = sc.nextLine();
 
-		System.out.println("Data de Nascimento do animal: (mm/aaaa) ");
-		// TRATAR ERRO DE DATA
-		String dataNascimento = sc.nextLine();
-		int mes = Integer.parseInt(dataNascimento.substring(0, 2));
-		int ano = Integer.parseInt(dataNascimento.substring(3, 7));
+		String dataNascimento = "";
+		boolean dataValida = false;
+
+		while (!dataValida) {
+		    System.out.println("Data de Nascimento do animal: (mm/aaaa) ");
+		    dataNascimento = sc.nextLine();
+
+		    try {
+		        int mes = Integer.parseInt(dataNascimento.substring(0, 2));
+		        int ano = Integer.parseInt(dataNascimento.substring(3, 7));
+
+		        if (mes >= 1 && mes <= 12 && ano > 0) {
+		            dataValida = true;
+		        } else {
+		            System.out.println("Data inválida. Mês deve estar entre 01 e 12 e o ano deve ser positivo.");
+		        }
+		    } catch (StringIndexOutOfBoundsException | NumberFormatException e) {
+		        System.out.println("Formato de data inválido. Por favor, use o formato mm/aaaa.");
+		    }
+		}
 
 		int opcaoEspecie = 0;
 		String especie = "";
