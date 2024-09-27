@@ -18,9 +18,9 @@ public class Cachorro extends Animal {
 
 	@Override
 	public String toString() {
-		return "Animal [id=" + super.getId() + ", nome=" + super.getNome() + ", dataNascimento="
-				+ super.getDataNascimento()  + ", idade=" + super.getIdadeAnos() + " anos e " + super.getIdadeMeses() + " meses" + ", especie=" + super.getEspecie() + ", sexo=" + super.getSexo()
-				+ ", status=" + super.getStatus() + ", porte=" + porte + "]";
+		return "Animal - ID = " + super.getId() + ", Nome = " + super.getNome() + ", dataNascimento = "
+				+ super.getDataNascimento()  + ", Idade = " + super.getIdadeAnos() + " Anos e " + super.getIdadeMeses() + " meses" + ", Especie = " + super.getEspecie() + ", Sexo = " + super.getSexo()
+				+ ", Status = " + super.getStatus() + ", Porte = " + porte;
 	}
 
 }

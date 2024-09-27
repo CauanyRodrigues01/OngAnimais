@@ -3,7 +3,7 @@ package ong;
 import java.util.Objects;
 
 public class Adotante {
-	private static int contador = 0;
+	private static int contador = 1;
 	private int id;
 	private String nome;
 	private String endereco;
@@ -52,7 +52,7 @@ public class Adotante {
 
 	@Override
 	public String toString() {
-		return "Adotante [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", contato=" + contato + "]";
+		return "Adotante - ID = " + id + ", Nome = " + nome + ", Endereco = " + endereco + ", Contato = " + contato ;
 	}
 
 	@Override

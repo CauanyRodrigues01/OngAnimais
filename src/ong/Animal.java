@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public abstract class Animal {
 
-	private static int contador = 0;
+	private static int contador = 1;
 	private int id;
 	private String nome;
 	private String dataNascimento;
@@ -13,7 +13,7 @@ public abstract class Animal {
 	private int idadeMeses;
 	private String especie;
 	private String sexo;
-	private String status;
+	private String status; //disponivel ou indisponivel
 
 
 	public Animal(String nome, String dataNascimento, int idadeAnos, int idadeMeses,  String especie, String sexo) {
