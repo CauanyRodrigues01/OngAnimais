@@ -243,42 +243,87 @@ public class main {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		
+		
 		if (adotantes.isEmpty()) {
 			System.out.println("Não há adotantes disponíveis.");
 		} else {
-			System.out.println("Informe o seu ID: ");
-			String opcao = sc.nextLine();
-			try {
-				int id = Integer.parseInt(opcao);
-				
-				int opcaoEspecie = 0;
-				String especie = "";
-				while (opcaoEspecie != 1 && opcaoEspecie != 2 && opcaoEspecie !=3) {
-					System.out.println("Digite a espécie do animal: 1) Gato 2) Cachorro 3) Não tenho preferência ");
-					String opcaoFiltroEspecie = sc.nextLine();
-					try {
-						opcaoEspecie = Integer.parseInt(opcaoFiltroEspecie);
-						if (opcaoEspecie == 1) {
-							especie = "gato";
-							
-						} else if (opcaoEspecie == 2) {
-							especie = "cachorro";
-						} else  {
-							System.out.println("Opção inválida, digite novamente.");
+			int contAdotante = 0;
+			while (contAdotante == 0) {
+				System.out.println("Informe o seu ID: ");
+				String opcao = sc.nextLine();
+				try {
+					int id = Integer.parseInt(opcao);
+					
+					for (Adotante adotante: adotantes) {
+						if (adotante.getId() == id) {
+							contAdotante++;
+							break;
 						}
-						for(Animal animal : animais) {
-							if (animal.getEspecie().equals(especie)) {
-							}
-						}
-					} catch (NumberFormatException e) {
-						System.out.println("Entrada inválida. Por favor, insira um número.");
 					}
+					if (contAdotante == 0) {
+						System.out.println("Adotante não cadastrado em nosso sistema, tente mais uma vez");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Entrada inválida. Por favor, insira um número.");
 				}
-				
-			} catch (NumberFormatException e) {
-				System.out.println("Entrada inválida. Por favor, insira um número.");
 			}
 			
+			int opcaoEspecie = 0;
+			String especie = "";
+			while (opcaoEspecie != 1 && opcaoEspecie != 2 && opcaoEspecie !=3) {
+				System.out.println("Digite a espécie do animal: 1) Gato 2) Cachorro 3) Não tenho preferência ");
+				String opcaoFiltroEspecie = sc.nextLine();
+				try {
+					opcaoEspecie = Integer.parseInt(opcaoFiltroEspecie);
+					if (opcaoEspecie == 1) {
+						especie = "gato";
+						
+					} else if (opcaoEspecie == 2) {
+						especie = "cachorro";
+					} else if (opcaoEspecie == 3) {
+						especie = "nao tenho preferencia";
+					} else  {
+						System.out.println("Opção inválida, digite novamente.");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Entrada inválida. Por favor, insira um número.");
+				}
+			}
+			
+			int opcaoSexo = 0;
+			String sexo = "";
+			while (opcaoSexo != 1 && opcaoSexo != 2) {
+				System.out.println("Digite qual sexo do animal: 1) Fêmea 2) Macho 3) Não tenho preferência ");
+				String entradaSexo = sc.nextLine();
+				try {
+					opcaoSexo = Integer.parseInt(entradaSexo);
+					if (opcaoSexo == 1) {
+						sexo = "femea";
+					} else if (opcaoSexo == 2) {
+						sexo = "macho";
+					}  else if (opcaoSexo == 3) {
+						sexo = "nao tenho preferencia";
+					} else {
+						System.out.println("Opção inválida, digite novamente");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Entrada inválida. Por favor, insira um número.");
+				}
+			}
+			
+			int opcaoIdadeMaxima = 0;
+			String idade = "";
+			while (true) {
+				System.out.println("Digite quantos idade máxima que o animal deve ter: ");
+				String entradaIdade = sc.nextLine();
+				try {
+					opcaoIdadeMaxima = Integer.parseInt(entradaIdade);
+					break;
+				} catch (NumberFormatException e) {
+					System.out.println("Entrada inválida. Por favor, insira um número.");
+				}
+			}
 		}
 	}
 }// fim - main
