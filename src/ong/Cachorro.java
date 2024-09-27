@@ -3,8 +3,8 @@ package ong;
 public class Cachorro extends Animal {
 	private String porte;
 
-	public Cachorro(String nome, String dataNascimento, String especie, String sexo, String porte) {
-		super(nome, dataNascimento, especie, sexo);
+	public Cachorro(String nome, String dataNascimento, int idadeAnos, int idadeMeses, String especie, String sexo, String porte) {
+		super(nome, dataNascimento,idadeAnos, idadeMeses, especie, sexo);
 		this.porte = porte;
 	}
 
@@ -19,7 +19,7 @@ public class Cachorro extends Animal {
 	@Override
 	public String toString() {
 		return "Animal [id=" + super.getId() + ", nome=" + super.getNome() + ", dataNascimento="
-				+ super.getDataNascimento() + ", especie=" + super.getEspecie() + ", sexo=" + super.getSexo()
+				+ super.getDataNascimento()  + ", idade=" + super.getIdadeAnos() + " anos e " + super.getIdadeMeses() + " meses" + ", especie=" + super.getEspecie() + ", sexo=" + super.getSexo()
 				+ ", status=" + super.getStatus() + ", porte=" + porte + "]";
 	}
 

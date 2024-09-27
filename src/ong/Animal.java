@@ -9,26 +9,22 @@ public abstract class Animal {
 	private int id;
 	private String nome;
 	private String dataNascimento;
+	private int idadeAnos;
+	private int idadeMeses;
 	private String especie;
 	private String sexo;
 	private String status;
 
-	public Animal(String nome, String dataNascimento, String especie, String sexo) {
+
+	public Animal(String nome, String dataNascimento, int idadeAnos, int idadeMeses,  String especie, String sexo) {
 		this.id = contador++;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
+		this.idadeAnos = idadeAnos;
+		this.idadeMeses = idadeMeses;
 		this.especie = especie;
 		this.sexo = sexo;
 		this.status = "disponivel";
-	}
-
-	// listarAnimais()
-	// adotarAnimal()
-
-	public void listarAnimais(ArrayList<Animal> animais) {
-		for (Animal animal : animais) {
-			System.out.println(animal);
-		}
 	}
 
 	public static void removerAnimal(int index, ArrayList<Integer> id, ArrayList<String> nome,
@@ -41,6 +37,7 @@ public abstract class Animal {
 		porte.remove(index);
 		pelagem.remove(index);
 	}
+	
 
 	public Integer getId() {
 		return id;
@@ -90,9 +87,26 @@ public abstract class Animal {
 		this.status = status;
 	}
 
+	public int getIdadeAnos() {
+		return idadeAnos;
+	}
+
+	public void setIdadeAnos(int idadeAnos) {
+		this.idadeAnos = idadeAnos;
+	}
+
+	public int getIdadeMeses() {
+		return idadeMeses;
+	}
+
+	public void setIdadeMeses(int idadeMeses) {
+		this.idadeMeses = idadeMeses;
+	}
+
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", especie=" + especie
+		
+		return "Animal [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", idade=" + idadeAnos + " anos e " + idadeMeses + " meses" +  ", especie=" + especie
 				+ ", sexo=" + sexo + ", status=" + status + "]";
 	}
 

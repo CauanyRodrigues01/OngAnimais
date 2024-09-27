@@ -1,6 +1,7 @@
 package ong;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class main {
@@ -31,10 +32,11 @@ public class main {
 					cadastrarAnimal(animais);
 
 				} else if (opcaoMenu == 2) {
-					System.out.println("Listagem de animais disponíveis:");
-
+				    listarAnimaisDisponiveis(animais);	
+				    
 				} else if (opcaoMenu == 3) {
 					System.out.println("Adotar Animal");
+					adotarAnimal(animais, adotantes);
 
 				} else if (opcaoMenu == 4) {
 					System.out.println("Cadastrar adotante");
@@ -45,7 +47,8 @@ public class main {
 					listarAdotantes(adotantes);
 
 				} else if (opcaoMenu == 6) {
-					System.out.println("Exibir relatório");
+					 System.out.println("Exibir relatório");
+					 exibirRelatorio(animais);
 
 				} else if (opcaoMenu == 7) {
 					System.out.println("Saindo do Sistema, obrigada por Usar.");
@@ -98,11 +101,14 @@ public class main {
 
 		String dataNascimento = "";
 		boolean dataValida = false;
+		
+        int idadeAnos = 0;
+        int idadeMeses = 0;
 
 		while (!dataValida) {
-		    System.out.println("Data de Nascimento do animal: (mm/aaaa) ");
+		    System.out.println("Mês e ano de Nascimento do animal: (mm/aaaa)");
 		    dataNascimento = sc.nextLine();
-
+		    
 		    try {
 		        int mes = Integer.parseInt(dataNascimento.substring(0, 2));
 		        int ano = Integer.parseInt(dataNascimento.substring(3, 7));
@@ -112,11 +118,25 @@ public class main {
 		        } else {
 		            System.out.println("Data inválida. Mês deve estar entre 01 e 12 e o ano deve ser positivo.");
 		        }
+		        
+				Calendar calendario = Calendar.getInstance();
+		        int mesAtual = calendario.get(Calendar.MONTH) + 1;
+		        int anoAtual = calendario.get(Calendar.YEAR);
+		      
+		        idadeAnos =  anoAtual - ano;
+		        
+		        if (mesAtual < mes) { 
+		            idadeAnos--;  
+		            idadeMeses = (12 - mes) + mesAtual; 
+		        } else {
+		            idadeMeses = mesAtual - mes;  
+		        }
+		        
+		        
 		    } catch (StringIndexOutOfBoundsException | NumberFormatException e) {
 		        System.out.println("Formato de data inválido. Por favor, use o formato mm/aaaa.");
 		    }
 		}
-
 		int opcaoEspecie = 0;
 		String especie = "";
 		while (opcaoEspecie != 1 && opcaoEspecie != 2) {
@@ -184,16 +204,81 @@ public class main {
 
 		}
 		if (especie.equals("cachorro")) {
-			Cachorro cachorro = new Cachorro(nome, dataNascimento, especie, sexo, porte);
+			Cachorro cachorro = new Cachorro(nome, dataNascimento, idadeAnos, idadeMeses, especie, sexo, porte);
 			animais.add(cachorro);
 
-			System.out.println(cachorro);
 		} else if (especie.equals("gato")) {
-			Gato gato = new Gato(nome, dataNascimento, especie, sexo, pelos);
-			System.out.println(gato);
+			Gato gato = new Gato(nome, dataNascimento, idadeAnos, idadeMeses, especie, sexo, pelos);
+			animais.add(gato);
 		}
 		System.out.println("Seu animal cadastrado com sucesso! ");
 		System.out.println("-------------------------------------------------------");
-		sc.close();
 	}// fim - cadastrar animal
+	
+	public static void listarAnimaisDisponiveis(ArrayList<Animal> animais) {
+	    if (animais.isEmpty()) {
+	        System.out.println("Não há animais disponíveis para adoção.");
+	    } else {
+	        System.out.println("Listagem de Animais Disponíveis para Adoção:");
+	        for (Animal animal : animais) {
+	            if (animal.getStatus().equalsIgnoreCase("disponivel")) {
+	            	 System.out.println(animal);
+	            }
+	        }
+	    }
+	}
+	
+	public static void exibirRelatorio(ArrayList<Animal> animais) {
+	    if (animais.isEmpty()) {
+	        System.out.println("Não há animais cadastrados.");
+	    } else {
+	        System.out.println("Relatório de Animais Cadastrados:");
+	        for (Animal animal : animais) {
+	            System.out.println(animal);
+	        }
+	    }
+	}
+	
+	public static void adotarAnimal(ArrayList<Animal> animais, ArrayList<Adotante> adotantes) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		if (adotantes.isEmpty()) {
+			System.out.println("Não há adotantes disponíveis.");
+		} else {
+			System.out.println("Informe o seu ID: ");
+			String opcao = sc.nextLine();
+			try {
+				int id = Integer.parseInt(opcao);
+				
+				int opcaoEspecie = 0;
+				String especie = "";
+				while (opcaoEspecie != 1 && opcaoEspecie != 2 && opcaoEspecie !=3) {
+					System.out.println("Digite a espécie do animal: 1) Gato 2) Cachorro 3) Não tenho preferência ");
+					String opcaoFiltroEspecie = sc.nextLine();
+					try {
+						opcaoEspecie = Integer.parseInt(opcaoFiltroEspecie);
+						if (opcaoEspecie == 1) {
+							especie = "gato";
+							
+						} else if (opcaoEspecie == 2) {
+							especie = "cachorro";
+						} else  {
+							System.out.println("Opção inválida, digite novamente.");
+						}
+						for(Animal animal : animais) {
+							if (animal.getEspecie().equals(especie)) {
+							}
+						}
+					} catch (NumberFormatException e) {
+						System.out.println("Entrada inválida. Por favor, insira um número.");
+					}
+				}
+				
+			} catch (NumberFormatException e) {
+				System.out.println("Entrada inválida. Por favor, insira um número.");
+			}
+			
+		}
+	}
 }// fim - main
